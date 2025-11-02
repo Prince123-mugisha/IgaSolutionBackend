@@ -7,12 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.util.UUID;
 
 @Getter
 @Setter
-@Table(name = "Users")
+@Table(name = "users")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,7 +44,6 @@ public class UserSchema {
     @Column(nullable = false)
     private Roles role;
 
-   
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private InstructorData instructorData;

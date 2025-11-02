@@ -1,7 +1,6 @@
-package com.work.IGA.Controllers;
+package com.work.IGA.Controllers.AuthController;
 
 import com.work.IGA.Services.AuthServices.UserAuth;
-import com.work.IGA.Services.File.FileService;
 import com.work.IGA.Utils.ApiResponse;
 import com.work.IGA.Utils.BaseSignUpDto;
 import com.work.IGA.Utils.InstructorSignUpDto;
@@ -18,8 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
    
 private final UserAuth userAuth;
-private final FileService fileService;
 
+
+    // Controller for SignUp Student
     @PostMapping("/signup/student")
     public ResponseEntity<ApiResponse<?>> SignUpStudent(@Valid @RequestBody BaseSignUpDto signUpDto){
         ApiResponse<?> response = userAuth.signUpStudent(signUpDto);
@@ -53,12 +53,6 @@ private final FileService fileService;
         else {
             return ResponseEntity.status(409).body(response);
         }
-    }
-
-    // Controller for viewing the  file  of Instructor
-    @GetMapping("/file/view")
-    public ResponseEntity<byte[]> viewFile(@RequestParam String fileUrl){
-        return fileService.getFileFromCloudinary(fileUrl);
-    }
+    }   
 
 }

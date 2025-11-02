@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
 import jakarta.annotation.PostConstruct;
+
 
 @Component
 public class JwtUtils {
@@ -23,11 +23,14 @@ public class JwtUtils {
 
     @PostConstruct
     public void init() {
-        // Generate a secure key for HS512
-        secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+        // Use the configured secret instead of generating a new one
+        secretKey = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+        System.out.println("JWT Secret Key initialized successfully");
     }
 
     public String generateJwToken(UserDetailsImpl userDetails) {
+        System.out.println("Generating token for user: " + userDetails.getUsername());
+        System.out.println("User roles: " + userDetails.getAuthorities());
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new java.util.Date())
@@ -49,16 +52,20 @@ public class JwtUtils {
 
     public boolean validateJwtToken(String token) {
         try {
-            Jwts.parserBuilder()
+            System.out.println("Validating JWT token: " + token.substring(0, Math.min(10, token.length())) + "...");
+            var claims = Jwts.parserBuilder()
                 .setSigningKey(secretKey)
                 .build()
-                .parseClaimsJws(token);
+                .parseClaimsJws(token)
+                .getBody();
+            System.out.println("Token validation successful");
+            System.out.println("Token claims: " + claims);
             return true;
         } catch (ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println("JWT validation error: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
-
 }
  

@@ -40,12 +40,10 @@ public class InstructorData {
     @Column(name = "image_url", length = 255, nullable = false)
     private String imageUrl;
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_instructor_user"))
     @JsonBackReference
     private UserSchema user;
-
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

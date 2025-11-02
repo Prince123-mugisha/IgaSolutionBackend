@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -38,22 +39,24 @@ public class SecurityConfig {
         return authConfig.getAuthenticationManager();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable())
-            .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> 
-                auth
-                    .requestMatchers("/api/v1/auth/**").permitAll()
-                    .requestMatchers("/api/public/**").permitAll()
-                    .requestMatchers("/api/v1/auth/file/view").permitAll()
-                    .anyRequest().authenticated()
-            );
+   @Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -> csrf.disable())
+        .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(auth -> 
+            auth
+                .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers("/api/v1/student/**").hasAuthority("ROLE_STUDENT")
+                .requestMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/api/v1/instructor/**").hasAnyAuthority("ROLE_INSTRUCTOR")
+                .anyRequest().authenticated()
+        );
 
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+    return http.build();
+}
 }
