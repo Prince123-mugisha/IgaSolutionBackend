@@ -2,6 +2,7 @@ package com.work.IGA.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -51,7 +52,18 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/v1/student/**").hasAuthority("ROLE_STUDENT")
                 .requestMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
-                .requestMatchers("/api/v1/instructor/**").hasAnyAuthority("ROLE_INSTRUCTOR")
+                .requestMatchers("/api/v1/instructor/**").hasAuthority("ROLE_INSTRUCTOR")
+                // Public courses endpoints - MOST SPECIFIC FIRST
+                .requestMatchers(HttpMethod.GET, "/api/v1/courses/all").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/courses/{courseId}").permitAll()
+                
+                // Student-specific courses endpoints
+                .requestMatchers(HttpMethod.POST, "/api/v1/courses/rate/{courseId}").hasAuthority("ROLE_STUDENT")
+                
+                // Instructor-specific courses endpoints
+                .requestMatchers(HttpMethod.POST, "/api/v1/courses/create").hasAuthority("ROLE_INSTRUCTOR")
+                .requestMatchers(HttpMethod.PUT, "/api/v1/courses/update/{courseId}").hasAuthority("ROLE_INSTRUCTOR")
+                .requestMatchers(HttpMethod.DELETE, "/api/v1/courses/delete/{courseId}").hasAuthority("ROLE_INSTRUCTOR")
                 .anyRequest().authenticated()
         );
 
