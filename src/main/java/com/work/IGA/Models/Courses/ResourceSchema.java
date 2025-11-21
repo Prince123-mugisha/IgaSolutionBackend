@@ -1,20 +1,10 @@
 package com.work.IGA.Models.Courses;
 
 import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonBackReference;  // ← ADD THIS
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
@@ -24,33 +14,33 @@ import lombok.Setter;
 @Table(name = "resources")
 public class ResourceSchema {
 
-     public enum ResourceType {
+    public enum ResourceType {
         VIDEO,
         SLIDE,
         DOCUMENT,
         LINK
-     }
-
+    }
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "module_id")
+    @JsonBackReference  
     private Modules module;
 
-    @Enumerated(jakarta.persistence.EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ResourceType resourceType;
     
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false )
-    private String url;
+    private String fileUrl;
+
+    private String link;
 
     @Column(length = 1000)
     private String description;
-    
 }

@@ -46,27 +46,44 @@ public class SupabaseStorageService {
      */
 
      public String uploadFile(MultipartFile file, String bucketName, String folder) throws IOException, InterruptedException {
-         if (file.isEmpty()) {
-                throw new IOException("file is Empty");
-         }
+               if (file == null) {
+                      logger.severe("uploadFile: MultipartFile is null");
+                      throw new IOException("MultipartFile is null");
+               }
+               if (file.isEmpty()) {
+                      logger.severe("uploadFile: MultipartFile is empty");
+                      throw new IOException("file is Empty");
+               }
 
-         String fileName = generatedFileName(file, folder);
-         String uploadUrl = buildUploadUrl(bucketName, fileName);
+               String fileName = generatedFileName(file, folder);
+               String uploadUrl = buildUploadUrl(bucketName, fileName);
 
-         logger.fine(String.format("Attempting to upload file: %s to bucket: %s in folder: %s", file.getOriginalFilename(), bucketName, folder));
+               logger.info(String.format("Attempting to upload file: %s to bucket: %s in folder: %s", file.getOriginalFilename(), bucketName, folder));
 
-         HttpRequest request = buildHttpRequest(uploadUrl, file);
-         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+               HttpRequest request;
+               try {
+                      request = buildHttpRequest(uploadUrl, file);
+               } catch (Exception ex) {
+                      logger.severe("Error building HTTP request for file upload: " + ex.getMessage());
+                      throw new IOException("Error building HTTP request: " + ex.getMessage(), ex);
+               }
 
-         if (response.statusCode() == 200 || response.statusCode() == 201) {
-                String publicUrl = buildPublicUrl(bucketName, fileName);
-                logger.info(String.format("File uploaded successfully. Public URL: %s", publicUrl));
-                return publicUrl;
-         }
-         else {
-                logger.severe(String.format("Failed to upload file. Status Code: %d, Response: %s", response.statusCode(), response.body()));
-                throw new IOException("Failed to upload file to Supabase Storage : " + response.body());
-         }
+               HttpResponse<String> response;
+               try {
+                      response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+               } catch (Exception ex) {
+                      logger.severe("Error sending HTTP request for file upload: " + ex.getMessage());
+                      throw new IOException("Error sending HTTP request: " + ex.getMessage(), ex);
+               }
+
+               if (response.statusCode() == 200 || response.statusCode() == 201) {
+                      String publicUrl = buildPublicUrl(bucketName, fileName);
+                      logger.info(String.format("File uploaded successfully. Public URL: %s", publicUrl));
+                      return publicUrl;
+               } else {
+                      logger.severe(String.format("Failed to upload file. Status Code: %d, Response: %s", response.statusCode(), response.body()));
+                      throw new IOException("Failed to upload file to Supabase Storage : " + response.body());
+               }
      }
 
       /**
@@ -79,8 +96,21 @@ public class SupabaseStorageService {
 
      // Method to upload file to Instructor bucket
      public String uploadToInstructorFile(MultipartFile file, String folder) throws IOException, InterruptedException {
-            logger.fine(String.format("Uploading instructor file to folder: %s", folder));
-            return uploadFile(file, instructorsBucket, folder);
+                     logger.info(String.format("Uploading instructor file to folder: %s", folder));
+                     if (file == null) {
+                            logger.severe("uploadToInstructorFile: MultipartFile is null");
+                            throw new IOException("MultipartFile is null");
+                     }
+                     if (file.isEmpty()) {
+                            logger.severe("uploadToInstructorFile: MultipartFile is empty");
+                            throw new IOException("file is Empty");
+                     }
+                     try {
+                            return uploadFile(file, instructorsBucket, folder);
+                     } catch (Exception ex) {
+                            logger.severe("Exception in uploadToInstructorFile: " + ex.getMessage());
+                            throw ex;
+                     }
 
      }
 

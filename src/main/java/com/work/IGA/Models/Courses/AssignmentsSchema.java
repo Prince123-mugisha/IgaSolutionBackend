@@ -1,8 +1,8 @@
 package com.work.IGA.Models.Courses;
 
 import lombok.*;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;  // ← ADD THIS
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -15,11 +15,7 @@ import java.util.UUID;
 @Table(name = "assignments_schema")
 public class AssignmentsSchema {
 
-    public enum AssignmentType {
-        QUIZ,
-        MID,
-        SUMMATIVE
-    }
+  
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +23,7 @@ public class AssignmentsSchema {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "module_id")
+    @JsonBackReference  // ← ADD THIS LINE
     private Modules module;
 
     @Column(nullable = false)
@@ -39,15 +36,12 @@ public class AssignmentsSchema {
     @Column(nullable = false)
     private AssignmentType assignmentType;
 
+    @Column
+    private String documentUrl;
 
-   @Column
-   private String documentUrl;
+    @Column 
+    private int maxPoints = 100;
 
-   @Column 
-   private int maxPoints = 100;
-
-   @Column
-   private LocalDate dueDate;
-   
-
+    @Column
+    private LocalDate dueDate;
 }

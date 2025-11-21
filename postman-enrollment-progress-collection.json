@@ -1,0 +1,149 @@
+{
+  "info": {
+    "name": "Student Enrollment Progress Update",
+    "description": "Update student progress in enrolled courses",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get My Enrolled Courses",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/student/enrollments/my-enrollments?page=0&size=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "student", "enrollments", "my-enrollments"],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Progress - NOT_STARTED",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/student/enrollments/{{enrollment_id}}/progress?progress=NOT_STARTED",
+          "host": ["{{base_url}}"],
+          "path": ["api", "student", "enrollments", "{{enrollment_id}}", "progress"],
+          "query": [
+            {
+              "key": "progress",
+              "value": "NOT_STARTED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Progress - IN_PROGRESS",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/student/enrollments/{{enrollment_id}}/progress?progress=IN_PROGRESS",
+          "host": ["{{base_url}}"],
+          "path": ["api", "student", "enrollments", "{{enrollment_id}}", "progress"],
+          "query": [
+            {
+              "key": "progress",
+              "value": "IN_PROGRESS"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Progress - COMPLETED",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/student/enrollments/{{enrollment_id}}/progress?progress=COMPLETED",
+          "host": ["{{base_url}}"],
+          "path": ["api", "student", "enrollments", "{{enrollment_id}}", "progress"],
+          "query": [
+            {
+              "key": "progress",
+              "value": "COMPLETED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Check Enrollment Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/student/enrollments/check/{{course_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "student", "enrollments", "check", "{{course_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "enrollment_id",
+      "value": "YOUR_ENROLLMENT_ID_HERE",
+      "type": "string"
+    },
+    {
+      "key": "course_id",
+      "value": "YOUR_COURSE_ID_HERE",
+      "type": "string"
+    }
+  ]
+}

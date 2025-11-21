@@ -1,0 +1,221 @@
+nohup: ignoring input
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.work:IGA:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-web:jar -> duplicate declaration of version (?) @ line 130, column 13
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.fasterxml.jackson.core:jackson-databind:jar -> duplicate declaration of version (?) @ line 136, column 13
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.projectlombok:lombok:jar -> duplicate declaration of version (?) @ line 142, column 13
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------------------------< com.work:IGA >----------------------------
+[INFO] Building IGA 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.6:run (default-cli) > test-compile @ IGA >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ IGA ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ IGA ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ IGA ---
+[INFO] skip non existing resourceDirectory /home/prince/Downloads/IGA/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ IGA ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:3.5.6:run (default-cli) < test-compile @ IGA <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.6:run (default-cli) @ IGA ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2025-11-19T11:46:49.635+02:00  INFO 500832 --- [IGA] [           main] com.work.IGA.IgaApplication              : Starting IgaApplication using Java 21.0.8 with PID 500832 (/home/prince/Downloads/IGA/target/classes started by prince in /home/prince/Downloads/IGA)
+2025-11-19T11:46:49.638+02:00  INFO 500832 --- [IGA] [           main] com.work.IGA.IgaApplication              : No active profile set, falling back to 1 default profile: "default"
+2025-11-19T11:46:50.763+02:00  INFO 500832 --- [IGA] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19T11:46:50.988+02:00  INFO 500832 --- [IGA] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 215 ms. Found 8 JPA repository interfaces.
+2025-11-19T11:46:51.876+02:00  INFO 500832 --- [IGA] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5000 (http)
+2025-11-19T11:46:51.892+02:00  INFO 500832 --- [IGA] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-19T11:46:51.892+02:00  INFO 500832 --- [IGA] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-11-19T11:46:51.943+02:00  INFO 500832 --- [IGA] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-19T11:46:51.944+02:00  INFO 500832 --- [IGA] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2226 ms
+2025-11-19T11:46:52.006+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : Class org.postgresql.Driver found in Thread context class loader TomcatEmbeddedWebappClassLoader
+  context: ROOT
+  delegate: true
+----------> Parent Classloader:
+jdk.internal.loader.ClassLoaders$AppClassLoader@639fee48
+
+2025-11-19T11:46:52.116+02:00  INFO 500832 --- [IGA] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19T11:46:52.162+02:00  INFO 500832 --- [IGA] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-11-19T11:46:52.194+02:00  INFO 500832 --- [IGA] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-19T11:46:52.597+02:00  INFO 500832 --- [IGA] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19T11:46:52.630+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - configuration:
+2025-11-19T11:46:52.633+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : allowPoolSuspension.............false
+2025-11-19T11:46:52.634+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : autoCommit......................true
+2025-11-19T11:46:52.634+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : catalog.........................none
+2025-11-19T11:46:52.634+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : connectionInitSql...............none
+2025-11-19T11:46:52.635+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : connectionTestQuery.............none
+2025-11-19T11:46:52.636+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : connectionTimeout...............20000
+2025-11-19T11:46:52.636+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : credentials.....................com.zaxxer.hikari.util.Credentials@6ec3d8e4
+2025-11-19T11:46:52.637+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : dataSource......................none
+2025-11-19T11:46:52.637+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : dataSourceClassName.............none
+2025-11-19T11:46:52.637+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : dataSourceJNDI..................none
+2025-11-19T11:46:52.638+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : dataSourceProperties............{password=<masked>}
+2025-11-19T11:46:52.639+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : driverClassName................."org.postgresql.Driver"
+2025-11-19T11:46:52.639+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : exceptionOverride...............none
+2025-11-19T11:46:52.639+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : exceptionOverrideClassName......none
+2025-11-19T11:46:52.640+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : healthCheckProperties...........{}
+2025-11-19T11:46:52.640+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : healthCheckRegistry.............none
+2025-11-19T11:46:52.640+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : idleTimeout.....................600000
+2025-11-19T11:46:52.640+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : initializationFailTimeout.......1
+2025-11-19T11:46:52.641+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : isolateInternalQueries..........false
+2025-11-19T11:46:52.641+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : jdbcUrl.........................jdbc:postgresql://iga-db.postgres.database.azure.com:5432/postgres?sslmode=require
+2025-11-19T11:46:52.642+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : keepaliveTime...................120000
+2025-11-19T11:46:52.642+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : leakDetectionThreshold..........0
+2025-11-19T11:46:52.642+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : maxLifetime.....................1800000
+2025-11-19T11:46:52.642+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : maximumPoolSize.................5
+2025-11-19T11:46:52.642+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : metricRegistry..................none
+2025-11-19T11:46:52.643+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : metricsTrackerFactory...........none
+2025-11-19T11:46:52.643+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : minimumIdle.....................5
+2025-11-19T11:46:52.643+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : password........................<masked>
+2025-11-19T11:46:52.643+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : poolName........................"HikariPool-1"
+2025-11-19T11:46:52.644+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : readOnly........................false
+2025-11-19T11:46:52.644+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : registerMbeans..................false
+2025-11-19T11:46:52.644+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : scheduledExecutor...............none
+2025-11-19T11:46:52.644+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : schema..........................none
+2025-11-19T11:46:52.645+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : threadFactory...................internal
+2025-11-19T11:46:52.645+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : transactionIsolation............default
+2025-11-19T11:46:52.645+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : username........................"postgres"
+2025-11-19T11:46:52.645+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariConfig           : validationTimeout...............5000
+2025-11-19T11:46:52.645+02:00  INFO 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-19T11:46:52.659+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Attempting to create/setup new connection (0360ff57-8831-4ea1-ac41-c4c5a39b4caa)
+2025-11-19T11:46:54.483+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Established new connection (0360ff57-8831-4ea1-ac41-c4c5a39b4caa)
+2025-11-19T11:46:54.488+02:00  INFO 500832 --- [IGA] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7a7f9d45
+2025-11-19T11:46:54.493+02:00  INFO 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-19T11:46:54.593+02:00 DEBUG 500832 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=1/5, idle=0/5, active=1, waiting=0)
+2025-11-19T11:46:54.595+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Attempting to create/setup new connection (b4c0f293-8bae-45b3-b50e-81166b24eadd)
+2025-11-19T11:46:54.686+02:00  WARN 500832 --- [IGA] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-19T11:46:54.967+02:00  INFO 500832 --- [IGA] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.6
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19T11:46:55.258+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Established new connection (b4c0f293-8bae-45b3-b50e-81166b24eadd)
+2025-11-19T11:46:55.259+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28f580cd
+2025-11-19T11:46:55.298+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=2/5, idle=2/5, active=0, waiting=0)
+2025-11-19T11:46:55.298+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Attempting to create/setup new connection (afd06de2-3ea4-453e-8549-44d50c63cd84)
+2025-11-19T11:46:55.872+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Established new connection (afd06de2-3ea4-453e-8549-44d50c63cd84)
+2025-11-19T11:46:55.872+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@220debbd
+2025-11-19T11:46:55.902+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=3/5, idle=3/5, active=0, waiting=0)
+2025-11-19T11:46:55.902+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Attempting to create/setup new connection (7301830b-30d5-49d4-8efd-6f87fa67d6a4)
+2025-11-19T11:46:56.157+02:00  INFO 500832 --- [IGA] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19T11:46:56.573+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Established new connection (7301830b-30d5-49d4-8efd-6f87fa67d6a4)
+2025-11-19T11:46:56.573+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@670f7198
+2025-11-19T11:46:56.604+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=4/5, idle=3/5, active=1, waiting=0)
+2025-11-19T11:46:56.608+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Attempting to create/setup new connection (df3c2851-dce1-44e9-900a-009145704fc2)
+2025-11-19T11:46:57.287+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Established new connection (df3c2851-dce1-44e9-900a-009145704fc2)
+2025-11-19T11:46:57.288+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6378765c
+2025-11-19T11:46:57.318+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After adding stats (total=5/5, idle=4/5, active=1, waiting=0)
+2025-11-19T11:46:57.319+02:00 DEBUG 500832 --- [IGA] [onnection-adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Connection not added, stats (total=5/5, idle=4/5, active=1, waiting=0)
+2025-11-19T11:47:00.498+02:00  INFO 500832 --- [IGA] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+=== JWT Secret Configuration ===
+JWT Secret source: Environment variable
+JWT Secret length: 53 characters
+JWT Secret first 10 chars: 123456789Q...
+JWT Secret hash: 1143799903
+✅ JWT Secret Key initialized successfully for HS384
+=====================================
+2025-11-19T11:47:00.823+02:00 DEBUG 500832 --- [IGA] [           main] c.w.I.C.JwtAuthenticationFilter          : Filter 'authenticationJwtTokenFilter' configured for use
+2025-11-19T11:47:00.946+02:00  INFO 500832 --- [IGA] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsServices
+2025-11-19T11:47:01.139+02:00  INFO 500832 --- [IGA] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-19T11:47:02.130+02:00  WARN 500832 --- [IGA] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19T11:47:02.930+02:00  WARN 500832 --- [IGA] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-11-19T11:47:02.934+02:00  INFO 500832 --- [IGA] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19T11:47:02.935+02:00  INFO 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-19T11:47:02.935+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Before shutdown stats (total=5/5, idle=5/5, active=0, waiting=0)
+2025-11-19T11:47:02.936+02:00 DEBUG 500832 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@7a7f9d45: (connection evicted)
+2025-11-19T11:47:03.017+02:00 DEBUG 500832 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@28f580cd: (connection evicted)
+2025-11-19T11:47:03.100+02:00 DEBUG 500832 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@220debbd: (connection evicted)
+2025-11-19T11:47:03.181+02:00 DEBUG 500832 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@670f7198: (connection evicted)
+2025-11-19T11:47:03.261+02:00 DEBUG 500832 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@6378765c: (connection evicted)
+2025-11-19T11:47:03.338+02:00 DEBUG 500832 --- [IGA] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After  shutdown stats (total=0/5, idle=0/5, active=0, waiting=0)
+2025-11-19T11:47:03.338+02:00  INFO 500832 --- [IGA] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-11-19T11:47:03.374+02:00  INFO 500832 --- [IGA] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-19T11:47:03.394+02:00 ERROR 500832 --- [IGA] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 5000 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 5000 or configure this application to listen on another port.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.966 s
+[INFO] Finished at: 2025-11-19T11:47:03+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.6:run (default-cli) on project IGA: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     2025-11-19T11:46:43.630+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - keepalive: connection org.postgresql.jdbc.PgConnection@15925d37 is alive
+2025-11-19T11:46:55.150+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=5/5, idle=5/5, active=0, waiting=0)
+2025-11-19T11:46:55.150+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled.
+2025-11-19T11:46:55.372+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - keepalive: connection org.postgresql.jdbc.PgConnection@af41c9e is alive
+2025-11-19T11:47:25.151+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=5/5, idle=5/5, active=0, waiting=0)
+2025-11-19T11:47:25.151+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled.
+2025-11-19T11:47:44.393+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - keepalive: connection org.postgresql.jdbc.PgConnection@1450ffa3 is alive
+2025-11-19T11:47:55.152+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Pool stats (total=5/5, idle=5/5, active=0, waiting=0)
+2025-11-19T11:47:55.154+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled.
+2025-11-19T11:48:09.410+02:00  INFO 496671 --- [IGA] [nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19T11:48:09.410+02:00  INFO 496671 --- [IGA] [nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-19T11:48:09.413+02:00  INFO 496671 --- [IGA] [nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Raw Authorization header: null
+Request URI: /api/auth/login
+Auth Header: null
+No JWT token found in request headers
+2025-11-19T11:48:10.267+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - keepalive: connection org.postgresql.jdbc.PgConnection@5a68a231 is alive
+2025-11-19T11:48:14.213+02:00 DEBUG 496671 --- [IGA] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - keepalive: connection org.postgresql.jdbc.PgConnection@5090c941 is alive
+2025-11-19T11:48:16.977+02:00  INFO 496671 --- [IGA] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19T11:48:16.987+02:00  INFO 496671 --- [IGA] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-11-19T11:48:17.036+02:00  INFO 496671 --- [IGA] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19T11:48:17.038+02:00  INFO 496671 --- [IGA] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-19T11:48:17.038+02:00 DEBUG 496671 --- [IGA] [ionShutdownHook] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Before shutdown stats (total=5/5, idle=5/5, active=0, waiting=0)
+2025-11-19T11:48:17.039+02:00 DEBUG 496671 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@1450ffa3: (connection evicted)
+2025-11-19T11:48:17.141+02:00 DEBUG 496671 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@5a68a231: (connection evicted)
+2025-11-19T11:48:17.222+02:00 DEBUG 496671 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@5090c941: (connection evicted)
+2025-11-19T11:48:17.308+02:00 DEBUG 496671 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@15925d37: (connection evicted)
+2025-11-19T11:48:17.389+02:00 DEBUG 496671 --- [IGA] [nnection-closer] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Closing connection org.postgresql.jdbc.PgConnection@af41c9e: (connection evicted)
+2025-11-19T11:48:17.472+02:00 DEBUG 496671 --- [IGA] [ionShutdownHook] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - After  shutdown stats (total=0/5, idle=0/5, active=0, waiting=0)
+2025-11-19T11:48:17.472+02:00  INFO 496671 --- [IGA] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

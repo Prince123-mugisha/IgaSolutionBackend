@@ -1,7 +1,6 @@
 package com.work.IGA.Utils;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -10,14 +9,14 @@ public class ApiResponse<T> {
     private boolean success;
     private String message;
     private T data;
-    private LocalDate timestamp;
+    private LocalDateTime timestamp;
     private String Token;
 
     public ApiResponse(boolean success, String message, T data,  String Token){
         this.success = success;
         this.message = message;
         this.data = data;
-        this.timestamp = LocalDate.now();
+        this.timestamp = LocalDateTime.now();
         this.Token = Token;
 
     }

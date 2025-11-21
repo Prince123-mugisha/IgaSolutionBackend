@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.work.IGA.Models.Users.UserSchema;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +35,7 @@ public class CoursesSchema {
 
    @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "instructor_id")
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
    private UserSchema instructor;
 
 
@@ -56,6 +58,7 @@ public class CoursesSchema {
    private double price = 0.0;
 
    @OneToMany(mappedBy = "course", cascade = jakarta.persistence.CascadeType.ALL, fetch = FetchType.LAZY)
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "course"})
    private List<Modules> modules;
 
 

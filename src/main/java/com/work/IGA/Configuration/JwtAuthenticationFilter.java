@@ -56,6 +56,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         } catch (Exception e) {
             System.out.println("Authentication error: " + e.getMessage());
+            
+            // Provide specific error messages for common JWT issues
+            if (e.getMessage().contains("JWT signature does not match")) {
+                System.out.println("SOLUTION: This error indicates that the JWT token was signed with a different secret key.");
+                System.out.println("1. Check if JWT_SECRET environment variable is set correctly");
+                System.out.println("2. Make sure all instances use the same JWT secret");
+                System.out.println("3. If you changed the secret, existing tokens will be invalid");
+                System.out.println("4. Users may need to log in again to get new tokens");
+            }
             e.printStackTrace();
         }
         filterChain.doFilter(request, response);

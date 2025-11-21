@@ -1,4 +1,5 @@
 package com.work.IGA.Models.Courses;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -16,25 +17,19 @@ public class Grades {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOn(fetch = FetchType.LAZY)
-    JoinColumn(name = "enrollment_id")
-    private Enrollment enrollment;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enrollment_id")
     private Enrollment enrollment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assignment_id")
-    private AssignmentsSchema assignment;
+    // Changed: Link to AssignmentSubmission instead of AssignmentsSchema
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assignment_submission_id")
+    @JsonBackReference
+    private AssignmentSubmission assignmentSubmission;
 
     @Column
     private int pointAwarded;
 
-    
     @Column
     private LocalDateTime gradedAt = LocalDateTime.now();
-    
-
-    
 }
