@@ -1,0 +1,44 @@
+# Use OpenJDK 17 from official image
+FROM openjdk:17-jdk-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install curl for health checks
+RUN apk add --no-cache curl
+
+# Create a non-root user for security
+RUN addgroup -g 1000 appuser && adduser -D -u 1000 -G appuser appuser
+
+# Copy Maven wrapper and pom.xml first for better caching
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+
+# Make Maven wrapper executable
+RUN chmod +x ./mvnw
+
+# Download dependencies (as root for now)
+RUN ./mvnw dependency:go-offline -B
+
+# Copy source code
+COPY src ./src
+
+# Build the application
+RUN ./mvnw clean package -DskipTests
+
+# Change ownership of the app directory to appuser
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose port (matches your docker-compose.yml)
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:5000/actuator/health || exit 1
+
+# Run the application
+CMD ["java", "-jar", "target/*.jar"]
