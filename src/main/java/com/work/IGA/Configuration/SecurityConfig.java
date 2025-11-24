@@ -59,8 +59,9 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         .csrf(csrf -> csrf.disable())
         .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> 
+        .authorizeHttpRequests(auth ->
             auth
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/v1/student/**").hasAuthority("ROLE_STUDENT")
@@ -69,31 +70,32 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 .requestMatchers("/api/v1/modules/**").hasAuthority("ROLE_INSTRUCTOR")
                 .requestMatchers("/api/v1/resources/**").hasAuthority("ROLE_INSTRUCTOR")
                 .requestMatchers("/api/v1/assignment/**").hasAuthority("ROLE_INSTRUCTOR")
-                // Public courses endpoints - MOST SPECIFIC FIRST
+
+                // Public courses endpoints
                 .requestMatchers(HttpMethod.GET, "/api/v1/courses/all").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/courses/{courseId}").permitAll()
-                
-                // Student-specific courses endpoints
+
+                // Student-specific courses
                 .requestMatchers(HttpMethod.POST, "/api/v1/courses/rate/{courseId}").hasAuthority("ROLE_STUDENT")
-                
-                // Instructor-specific courses endpoints
+
+                // Instructor-specific courses
                 .requestMatchers(HttpMethod.POST, "/api/v1/courses/create").hasAuthority("ROLE_INSTRUCTOR")
                 .requestMatchers(HttpMethod.PUT, "/api/v1/courses/update/{courseId}").hasAuthority("ROLE_INSTRUCTOR")
                 .requestMatchers(HttpMethod.DELETE, "/api/v1/courses/delete/{courseId}").hasAuthority("ROLE_INSTRUCTOR")
 
-               // Payment endpoints 
-               .requestMatchers("/api/public/payments/**").permitAll()
-               .requestMatchers(HttpMethod.GET, "/api/students/payments/verify/**").permitAll()
-               .requestMatchers(HttpMethod.GET, "/api/students/payments/reference/**").permitAll()
-               .anyRequest().authenticated()
+                // Payments
+                .requestMatchers("/api/public/payments/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/students/payments/verify/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/students/payments/reference/**").permitAll()
 
-                
+                .anyRequest().authenticated()
         );
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
 }
+
 
 
 }
