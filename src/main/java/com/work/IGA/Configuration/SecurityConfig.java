@@ -1,5 +1,6 @@
 package com.work.IGA.Configuration;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,17 +14,28 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
-import lombok.RequiredArgsConstructor;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 @Configuration
 @EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final CustomUserDetailsServices customUserDetailsServices;
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
     private final JwtUtils jwtUtils;
+    private final CorsConfigurationSource corsConfigSource;
+
+    public SecurityConfig(
+        CustomUserDetailsServices customUserDetailsServices,
+        JwtAuthenticationEntryPoint unauthorizedHandler,
+        JwtUtils jwtUtils,
+        @Qualifier("corsConfigurationSource") CorsConfigurationSource corsConfigSource
+    ) {
+        this.customUserDetailsServices = customUserDetailsServices;
+        this.unauthorizedHandler = unauthorizedHandler;
+        this.jwtUtils = jwtUtils;
+        this.corsConfigSource = corsConfigSource;
+    }
 
     @Bean
     public JwtAuthenticationFilter authenticationJwtTokenFilter() {
@@ -43,6 +55,7 @@ public class SecurityConfig {
    @Bean
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
+        .cors(cors -> cors.configurationSource(corsConfigSource))
         .csrf(csrf -> csrf.disable())
         .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -74,11 +87,13 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                .requestMatchers(HttpMethod.GET, "/api/students/payments/reference/**").permitAll()
                .anyRequest().authenticated()
 
-                // 
+                
         );
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
 }
+
+
 }
